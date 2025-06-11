@@ -1,123 +1,175 @@
-# Air Environment Dashboard
+# Weather Dashboard Widget - Technical Assessment
 
-🌍 **A personal dashboard for real-time air quality and weather monitoring, built with modern web technologies for optimal performance and usability.**
+## 📅 Start Date & Deadline
+**Start Time:** 09.06.25 09:00 am  
+**Submission Deadline:** 12.06.25
 
-![Dashboard Screenshot](https://i.postimg.cc/Vk7wdbyb/Screenshot-2025-04-24-112232.png)
-*Clean, intuitive interface with AQI and weather metrics*
+## 🌦️ Interactive Weather Dashboard Widget
 
-## 🚀 Tech Stack
+A React-based dashboard widget that displays and analyzes weather data across multiple cities, demonstrating advanced frontend development skills.
+![Screenshot 2025-06-11 122513](https://github.com/user-attachments/assets/eacd2994-9b44-4e61-8354-598b1e4f987f)
 
-This project is built with a modern, performant, and scalable tech stack:
 
--   **Core Framework**: [React](https://react.dev/) + [Vite](https://vitejs.dev/) for a fast and efficient development experience.
--   **Styling**: [Tailwind CSS](https://tailwindcss.com/) for a utility-first approach to styling.
--   **State Management**: React Context API for managing global state like theme and weather data.
--   **Routing**: [React Router](https://reactrouter.com/) for client-side routing.
--   **Animations**: [Lottie for React](https://lottiereact.com/) for high-quality, lightweight animations.
--   **Icons**: [React Icons](https://react-icons.github.io/react-icons/) for a comprehensive set of icons.
--   **Testing**: [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for unit and component testing.
--   **Linting**: [ESLint](https://eslint.org/) for code quality and consistency.
+## 🛠️ Tech Stack
 
-## ✨ Features
+- **Framework**: React 19 with Vite
+- **State Management**: Context API + useReducer
+- **Styling**: CSS Modules with custom transitions
+- **Visualization**: Pure SVG charts
+- **Testing**: Jest + React Testing Library
+- **API**: OpenWeatherMap with mock service
 
--   **Real-time Air Quality Index (AQI)** – Track pollution levels in your area.
--   **Current Weather Conditions** – Temperature, humidity, wind speed, and more.
--   **5-Day Weather Forecast** – Plan your week with a detailed forecast.
--   **Location-Based** – Automatically detects your location or allows for manual city selection.
--   **Responsive UI** – Seamless experience on mobile, tablet, and desktop.
--   **Dark/Light Theme** – Switch between themes for your viewing comfort.
+## 📋 Requirements Implemented
+
+✅ **Data Integration**  
+✅ **Complete UI Components**  
+✅ **Advanced State Management**  
+✅ **Custom Utility Functions**  
+✅ **Responsive Design**  
+✅ **Comprehensive Testing**
+
+## 🚀 Quick Start
+
+1. **Clone repository**:
+   ```bash
+   git clone https://github.com/your-username/weather-widget.git
+   cd weather-widget
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Configure environment**:
+   Create `.env` file:
+   ```env
+   VITE_OWM_API_KEY=your_openweathermap_api_key
+   ```
+
+4. **Run development server**:
+   ```bash
+   npm run dev
+   ```
 
 ## 📂 Project Structure
-
-The project is organized into the following directories:
 
 ```
 /
 ├── public/               # Static assets
-├── src/                  # Source code
-│   ├── assets/           # Images, animations, and other assets
-│   ├── components/       # Reusable React components
-│   ├── context/          # React context providers
-│   ├── hooks/            # Custom React hooks
-│   ├── reducers/         # Reducer functions for state management
-│   ├── styles/           # Global styles and themes
-│   └── utils/            # Utility functions
-├── .gitignore            # Git ignore file
-├── package.json          # Project dependencies and scripts
-└── README.md             # This file
+├── src/
+│   ├── components/       # All required UI components
+│   │   ├── CitySelector/
+│   │   ├── DataVisualization/
+│   │   ├── ErrorBoundary/
+│   │   ├── ForecastList/
+│   │   ├── SettingsPanel/
+│   │   └── WeatherDisplay/
+│   ├── context/          # Theme context
+│   ├── hooks/            # Custom hooks
+│   ├── reducers/         # State reducers
+│   ├── services/         # API services
+│   ├── utils/            # Utility functions
+│   └── App.jsx           # Main component
+├── tests/                # Unit tests
+└── docs/                 # Documentation
 ```
 
-## 🛠️ Setup (For Development)
+## 📊 Component Architecture
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/your-username/air-environment-dashboard.git
-    cd air-environment-dashboard
-    ```
+```mermaid
+flowchart TD
+    A[WeatherWidget] --> B[CitySelector]
+    A --> C[WeatherDisplay]
+    A --> D[ForecastList]
+    A --> E[DataVisualization]
+    A --> F[SettingsPanel]
+    A --> G[ErrorBoundary]
+    B --> H[useWeatherData]
+    C --> H
+    D --> H
+    E --> H
+    F --> I[ThemeContext]
+```
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
+## 🔄 Data Flow
 
-3.  **Set up environment variables:**
-    Create a `.env` file in the root of the project and add your API keys:
-    ```env
-    VITE_OPENWEATHER_API_KEY=your_api_key
-    VITE_AQI_API_KEY=your_aqi_key
-    ```
+```mermaid
+sequenceDiagram
+    participant User
+    participant CitySelector
+    participant useWeatherData
+    participant OpenWeatherAPI
+    participant WeatherDisplay
+    
+    User->>CitySelector: Select City
+    CitySelector->>useWeatherData: CHANGE_CITY
+    useWeatherData->>OpenWeatherAPI: Fetch Data
+    OpenWeatherAPI-->>useWeatherData: Weather Data
+    useWeatherData->>WeatherDisplay: Update State
+    WeatherDisplay->>User: Show Weather
+```
 
-4.  **Run the development server:**
-    ```bash
-    npm run dev
-    ```
+## 🧪 Testing
 
-## 📜 Available Scripts
+Run all tests with:
+```bash
+npm test
+```
 
-In the project directory, you can run the following commands:
+Test coverage includes:
+- `useWeatherData` hook
+- Temperature conversion utilities
+- Debounce functionality
+- Component snapshots
 
--   `npm run dev`: Runs the app in development mode. Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
--   `npm run build`: Builds the app for production to the `dist` folder.
--   `npm run lint`: Lints the code using ESLint.
--   `npm run preview`: Serves the production build locally for preview.
--   `npm run test`: Runs the test suite using Jest.
+## ⚙️ Performance Optimizations
 
-## 🧩 Components
+- API call throttling (1 call/5s)
+- Search input debounce (300ms)
+- Memoized components
+- Efficient data transformations
+- CSS hardware acceleration for animations
 
-The `src/components` directory contains all the React components for this application.
+## 📚 Documentation
 
--   **`CitySelector.jsx`**: A component that allows users to search for and select a city.
--   **`DataVisualization.jsx`**: A component for visualizing weather data, such as charts or graphs.
--   **`ErrorBoundary.jsx`**: A component that catches JavaScript errors anywhere in its child component tree.
--   **`ForecastList.jsx`**: A component that displays the 5-day weather forecast.
--   **`SettingsButton.jsx`**: A button that opens the settings panel.
--   **`SettingsPanel.jsx`**: A panel for application settings, like theme and language.
--   **`ToggleTheme.jsx`**: A component to toggle between light and dark themes.
--   **`WeatherDisplay.jsx`**: The main component for displaying the current weather conditions.
--   **`WeatherWidget.jsx`**: A container component that wraps the entire weather widget.
+### Custom Hooks
 
-## 🎣 Hooks
+**`useWeatherData`**  
+Handles all weather data operations including:
+- API fetching with throttling
+- Data transformation
+- Error handling
+- Unit conversion
 
-Custom hooks are located in the `src/hooks` directory.
+### Contexts
 
--   **`useWeatherData.js`**: A custom hook for fetching and managing weather data from the API.
+**`ThemeContext`**  
+Manages dark/light mode with color palette:
+- Light: `#f8f9fa`, `#212529`, `#0d6efd`
+- Dark: `#212529`, `#f8f9fa`, `#0d6efd`
 
-## 🌐 Context
+## 📱 Responsive Design
 
-The `src/context` directory contains the React Context providers for managing global state.
+- Fixed 800px width on desktop
+- Fluid layout on mobile
+- Adaptive component rendering
 
--   **`LanguageContext.jsx`**: Provides language state to the application.
--   **`ThemeContext.jsx`**: Provides theme state (dark/light) to the application.
--   **`WeatherContext.jsx`**: Provides weather data to the application.
+## 📝 Submission Notes
 
-## 🌟 Why I Built This
+1. Mock API service included for development
+2. Clear error handling for API failures
+3. Complete documentation in code comments
+4. Sample tests provided for all critical paths
 
-Initially created for **personal use** to monitor local air quality and weather in a simple, fast interface. Open-sourced so others can benefit or customize it for their needs!
+## 📞 Presentation Topics
 
-📜 **License**: MIT (Free to use and modify)
+1. Component architecture decisions
+2. State management approach
+3. Performance optimization strategies
+4. SVG chart implementation rationale
+5. Responsive design solutions
 
 ---
 
-🌫️ **Breathe easier with real-time environmental insights!** ☀️
-
-*(Note: Requires API keys for OpenWeather and AQI services)*
+🌤️ **Developed with attention to detail and modern React patterns** ⚛️
