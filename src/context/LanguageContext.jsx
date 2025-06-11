@@ -1,4 +1,3 @@
-// src/context/LanguageContext.js
 import React, { createContext, useState } from 'react';
 
 const translations = {

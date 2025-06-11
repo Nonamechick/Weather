@@ -4,7 +4,7 @@ const ToggleTheme = () => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    // On mount, check the current theme (saved in localStorage or prefers-color-scheme)
+    
     const savedTheme = localStorage.getItem("theme");
     if (
       savedTheme === "dark" ||

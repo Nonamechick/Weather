@@ -34,7 +34,7 @@ const DataVisualization = ({ hourlyData }) => {
       const pathLength = pathRef.current.getTotalLength();
       pathRef.current.style.strokeDasharray = pathLength;
       pathRef.current.style.strokeDashoffset = pathLength;
-      pathRef.current.getBoundingClientRect(); // Force reflow
+      pathRef.current.getBoundingClientRect(); 
       pathRef.current.style.transition = 'stroke-dashoffset 1.5s ease-out';
       pathRef.current.style.strokeDashoffset = 0;
     }
@@ -53,7 +53,7 @@ const DataVisualization = ({ hourlyData }) => {
               y1={y}
               x2={width - padding}
               y2={y}
-              stroke="#93c5fd" // light blue for grid
+              stroke="#93c5fd" 
               strokeWidth="1"
             />
           );
@@ -64,7 +64,7 @@ const DataVisualization = ({ hourlyData }) => {
           ref={pathRef}
           points={pointString}
           fill="none"
-          stroke="#1d4ed8" // Tailwind's blue-700 hex
+          stroke="#1d4ed8" 
           strokeWidth="3"
         />
 
@@ -80,7 +80,7 @@ const DataVisualization = ({ hourlyData }) => {
                   y={height - 10}
                   textAnchor="middle"
                   fontSize="14"
-                  fill="#1e3a8a" // dark blue text
+                  fill="#1e3a8a" 
                 >
                   {item.time}
                 </text>

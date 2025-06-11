@@ -7,7 +7,7 @@ const SettingsPage = ({ autoRefreshLabel, updatedLabel, onClose }) => {
   const [downloadSpeed, setDownloadSpeed] = useState("Calculating...");
 
   useEffect(() => {
-    // Ping the current origin (e.g., your deployed frontend/server)
+    
     const checkPing = async () => {
       const startTime = performance.now();
       try {
@@ -21,18 +21,18 @@ const SettingsPage = ({ autoRefreshLabel, updatedLabel, onClose }) => {
       }
     };
 
-    // Simulate API request every 5 seconds
+    
     const requestInterval = setInterval(() => {
       setRequestCount((prev) => prev + 1);
     }, 5000);
 
-    // Simulate a 5MB download to test speed
+    
     const testDownloadSpeed = () => {
-      const fileSize = 5 * 1024 * 1024; // 5MB
+      const fileSize = 5 * 1024 * 1024; 
       const startTime = performance.now();
       setTimeout(() => {
         const endTime = performance.now();
-        const timeTaken = (endTime - startTime) / 1000; // in seconds
+        const timeTaken = (endTime - startTime) / 1000; 
         const speedMbps = (fileSize / timeTaken / 1024 / 1024).toFixed(2);
         setDownloadSpeed(`${speedMbps} Mbps`);
       }, 1000);
@@ -41,7 +41,7 @@ const SettingsPage = ({ autoRefreshLabel, updatedLabel, onClose }) => {
     checkPing();
     testDownloadSpeed();
 
-    return () => clearInterval(requestInterval); // Clean up on unmount
+    return () => clearInterval(requestInterval); 
   }, []);
 
   return (
